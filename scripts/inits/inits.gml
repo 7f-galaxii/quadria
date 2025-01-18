@@ -23,6 +23,14 @@ function init_globals(){
 		sprite: sprite_add("skins\\bevel.png", 10, false, false, 0, 0),
 		name: "Beveled"
 	},
+	{
+		sprite: sprite_add("skins\\arcade_tgm.png", 10, false, false, 0, 0),
+		name: "Gradient (Arcade)"
+	},
+	{
+		sprite: sprite_add("skins\\arcade_modern.png", 10, false, false, 0, 0),
+		name: "Gradient (Modern)"
+	},
 	];
 	global.sounds = [
 	{
@@ -50,19 +58,12 @@ function init_globals(){
 		def : {shape: [
 					[ 1 ]
 				],
-				color: 0, kick: [
+				color: 0, spin_type: "All", kick: [
 				[ [ 0, 0], [-1, 0], [-1,-1], [ 0, 2], [-1, 2] ],
 				[ [ 0, 0], [ 1, 0], [ 1, 1], [ 0,-2], [ 1,-2] ],
 				[ [ 0, 0], [ 1, 0], [ 1,-1], [ 0, 2], [ 1, 2] ],
 				[ [ 0, 0], [-1, 0], [-1, 1], [ 0,-2], [-1,-2] ]
 			]},
-		sex : {shape: [
-					[ 1, 1, 1 ],
-					[ 0, 1, 0 ],
-					[ 1, 1, 1 ],
-				],
-				color: 0
-			},
 		i : {shape: [
 				[0, 0, 0, 0],
 				[1, 1, 1, 1],
@@ -84,7 +85,7 @@ function init_globals(){
 				[ 0, 1, 0 ],
 				[ 1, 1, 1 ],
 				[ 0, 0, 0 ]
-			], color: 7},
+			], spin_type: "T", color: 7},
 			
 		s : {shape: [
 				[ 0, 1, 1 ],

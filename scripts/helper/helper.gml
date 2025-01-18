@@ -1,3 +1,7 @@
+function draw_rectangle_size(_x, _y, width, height) {
+	draw_rectangle(_x, _y, _x+width, _y+height, false);
+}
+
 function snd_play_effect(sound, priority = 5, gain = 1, pitch = 1) {
 	audio_stop_sound(sound);
 	audio_play_sound(sound,priority,false,gain,0,pitch);

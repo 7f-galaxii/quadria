@@ -57,11 +57,15 @@ function spawn_piece(_spawn) {
 	if (!struct_exists(piece, "kick")) {
 		piece.kick = global.pieces.def.kick;
 	}
+	if (!struct_exists(piece, "spin_type")) {
+		piece.spin_type = global.pieces.def.spin_type;
+	}
 	piece.x = floor((x_size - array_length(piece.shape)) / 2);
 	piece.y = 0;
 	piece.y_part = 0;
 	lock_delay = -1;
 	hard_lock_delay = -1;
+	was_spun = false;
 
 }
 
@@ -79,11 +83,23 @@ function check_board() {
 			}
 		}
 	}
-	// play sound based on Information
-	if (lines_cleared >= 4) {
+	do_scoring(lines_cleared);
+}
+
+function do_scoring(cleared) {
+	if (cleared && was_spun) { 
+		// spin code
+		instance_create_layer(235, 160, "UI", objText, {
+			text: "T-spin",
+			halign: fa_right,
+			valign: fa_top,
+			
+		});
+	}
+	if (cleared >= 4) {
 		snd_play_effect(snd.clear4, 5, 2, 1+global.combo_pitch[min(combo, 7)]);
 		combo++;
-	} else if (lines_cleared > 0) {
+	} else if (cleared > 0) {
 		snd_play_effect(snd.clear, 5, 2, 1+global.combo_pitch[min(combo, 7)]);
 		combo++;
 	} else {
@@ -121,6 +137,7 @@ function shape_collide(_x, _y, _shape) {
 function kick(index,ccw) {
 	var _temp_shape = variable_clone(piece.shape);
 	var mult = ccw ? -1 : 1;
+	var _ret = false;
 	array_rotate(_temp_shape,ccw);
 	// check if offset is valid
 	// create temp rotated version, and check against kicktable
@@ -130,10 +147,19 @@ function kick(index,ccw) {
 			piece.y += piece.kick[index][i][1]*mult;
 			piece.rotation = modulo(piece.rotation+mult, 4)
 			array_rotate(piece.shape, ccw);
-			return true;
+			_ret = true;
+			break;
 		}
 	}
-	return false;
+	if (_ret && piece.spin_type == "T") {
+		var corners = 0;
+		corners += check_collision(piece.x,   piece.y  );
+		corners += check_collision(piece.x+2, piece.y  );
+		corners += check_collision(piece.x,   piece.y+2);
+		corners += check_collision(piece.x+2, piece.y+2);
+		if (corners >= 3) { was_spun = true; }
+	}
+	return _ret;
 }
 
 function move(x_off, y_off) {
@@ -141,6 +167,7 @@ function move(x_off, y_off) {
 	if (!col) {
 		piece.x += x_off;
 		piece.y += y_off;
+		was_spun = false;
 		return true;
 	}
 	return false;
@@ -169,8 +196,10 @@ function delay_lock() {
 init_globals();
 randomize();
 ld_count = 0;
+points = 0;
 combo = 0;
-skin = "Beveled";
+was_spun = false;
+skin = "Gradient (Modern)";
 _f = function(_e, _i){ return _e.name == skin; }
 sprite = global.skins[array_find_index(global.skins,_f)].sprite;
 snd = global.sounds[0];
