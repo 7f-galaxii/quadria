@@ -28,6 +28,7 @@ function yui_color_from_hex_string(hex_string) {
 		var alpha = hex_value & 0xFF000000;
 		
 		// clear alpha
+		//hex_value = hex_value ^ 0xFF000000;
 		hex_value = hex_value & 0x00FFFFFF;
 		
 		// handle color with alpha

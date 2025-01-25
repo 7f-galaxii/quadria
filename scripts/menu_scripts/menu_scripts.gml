@@ -12,7 +12,8 @@ function __exit_game() {
 	game_end();
 }
 
-function start_singleplayer(view_item) {
+function start_singleplayer(view_item, preset_id = undefined) {
+	if (preset_id != undefined) { global.game_settings = get_preset(preset_id); }
 	var is_doc = view_item[$"object_index"] == yui_document;
 	if is_doc {
 		var document = view_item;
@@ -34,7 +35,7 @@ function close_menu(view_item) {
 	else {
 		var document = view_item.document;
 	}
-	document.unload(function() { objGame.paused = !objGame.paused });
+	document.unload(function() { objGame.paused = !objGame.paused; instance_destroy(yui_document); });
 }
 
 function to_main_menu() {

@@ -2,9 +2,9 @@
 // You can write your code in this editor
 if (input_check_pressed("pause")) {
 	if (!paused) {
-		yui_document_create("UI/pause.yui", id)
+		yui_document_create("UI/pause.yui", objGame, false)
 	} else {
-		instance_find(yui_document, 0).unload(function() { objGame.paused = !objGame.paused });
+		instance_find(yui_document, 0).unload(function() {instance_destroy(yui_document)});
 	}
 	paused = !paused;
 }

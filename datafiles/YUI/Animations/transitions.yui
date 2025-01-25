@@ -13,6 +13,7 @@ resources:
     type: curve
     curve: curveLinear
     duration: 250
+    from: 1
     to: 0
 
   // possible short syntax:
