@@ -28,6 +28,10 @@ function __input_config_verbs()
             menu_down:   input_binding_key(vk_down),
             menu_left:   input_binding_key(vk_left),
             menu_right:  input_binding_key(vk_right),
+            scroll_up:     input_binding_key(vk_up),
+            scroll_down:   input_binding_key(vk_down),
+            scroll_left:   input_binding_key(vk_left),
+            scroll_right:  input_binding_key(vk_right),
             accept:      [input_binding_key(vk_space), input_binding_key(vk_enter), input_binding_key("Z")],
             cancel:      [input_binding_key(vk_backspace), input_binding_key(vk_escape), input_binding_key("X")],
         },
@@ -50,6 +54,10 @@ function __input_config_verbs()
             menu_left:  [input_binding_gamepad_axis(gp_axislh, true),  input_binding_gamepad_button(gp_padl)],
             menu_right: [input_binding_gamepad_axis(gp_axislh, false), input_binding_gamepad_button(gp_padr)],
 			menu_up:    [input_binding_gamepad_axis(gp_axislv, true),  input_binding_gamepad_button(gp_padu)],
+            aim_down:  [input_binding_gamepad_axis(gp_axislv, false), input_binding_gamepad_button(gp_padd)],
+            aim_left:  [input_binding_gamepad_axis(gp_axislh, true),  input_binding_gamepad_button(gp_padl)],
+            aim_right: [input_binding_gamepad_axis(gp_axislh, false), input_binding_gamepad_button(gp_padr)],
+			aim_up:    [input_binding_gamepad_axis(gp_axislv, true),  input_binding_gamepad_button(gp_padu)],
 
         },
         

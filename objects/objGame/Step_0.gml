@@ -1,5 +1,16 @@
 /// @description Insert description here
 // You can write your code in this editor
+if (input_check_pressed("pause")) {
+	if (!paused) {
+		yui_document_create("UI/pause.yui", id)
+	} else {
+		instance_find(yui_document, 0).unload(function() { objGame.paused = !objGame.paused });
+	}
+	paused = !paused;
+}
+
+if (paused) exit;
+
 piece.y_part += max(grav,grav*(softdropping*12));
 while (piece.y_part >= 1) {
 	piece.y_part--;
@@ -26,8 +37,7 @@ if (hard_lock_delay == 0) {
 	hard_lock_delay--;
 	if (shape_collide(0, 1, piece.shape)) lock_piece();
 }
-#region input
-
+	
 softdropping = input_check("softdrop");
 if (input_check_pressed("harddrop")) {
 	while (!shape_collide(0, 1, piece.shape)) {
@@ -72,4 +82,3 @@ if (input_check_pressed("hold")) {
 	snd_play_effect(snd.hold);
 	}
 }
-#endregion

@@ -1,0 +1,79 @@
+id: main_menu
+file_type: screen
+
+import:
+  - /YUI/Animations/transitions.yui
+
+
+// 'root' defineds the root element for the screen, which will generally be a panel or border with the screen content inside of it
+root:
+
+  // a panel is used to position multiple child elements inside of it
+  type: panel
+
+  // the canvas layout is used to position elements relative to the containing space, which in this case is the entire screen
+  // other possible layouts are: vertical, horizontal, grid, and radial
+  layout: horizontal
+  alignment: center
+
+  // here is where you add more elements to put inside the panel
+  elements:
+    - type: panel
+      background: #00000000
+      layout: vertical
+      alignment: center
+      padding: 10
+      elements:
+        - type: text
+          text_style: title
+          text: Tetradigm
+          animate:
+            on_visible:
+              opacity: &fade_in
+            on_unloading:
+              yoffset: &slide_out
+        
+        - type: panel
+          background: #00000000
+          layout: vertical
+          alignment: center
+          indexed: true
+          padding: 10
+          elements:
+            - type: button
+              content: "Singleplayer"
+              on_click: @@ e => ~yui_change_screen(singleplayer, e.source)
+              animate:
+                on_visible:
+                  opacity: &cascade_fade_in
+                on_unloading:
+                  opacity: &cascade_fade_out
+
+            - type: button
+              content: "Customization"
+              tooltip: "Unfinished"
+              tooltip_placement: top_right
+              animate:
+                on_visible:
+                  opacity: &cascade_fade_in
+                on_unloading:
+                  opacity: &cascade_fade_out
+
+            - type: button
+              content: "Options"
+              tooltip: "Unfinished"
+              tooltip_placement: top_right
+              animate:
+                on_visible:
+                  opacity: &cascade_fade_in
+                on_unloading:
+                  opacity: &cascade_fade_out
+
+            - type: button
+              content: "Exit"
+              on_click: @@ e => ~exit_game(e.source)
+              animate:
+                on_visible:
+                  opacity: &cascade_fade_in
+                on_unloading:
+                  opacity: &cascade_fade_out

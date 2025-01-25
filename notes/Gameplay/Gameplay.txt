@@ -1,0 +1,69 @@
+G = ((0.8 - ( (level - 1) * 0.007) ) ^ (level - 1)) / 60
+
+
+Key:
+- New Menu
++ Option
+= Explanation
+? Unsure
+
+Main Menu
+	- Singleplayer
+		- Marathon
+			+ Quickplay
+				= Starts a level 1, 7-bag game that ends at level 20
+			+ Expert
+				= Starts a level 15, 14-bag game
+				= Ends at 30 unless [some condition] which causes semi-invis
+			+ Endless
+				= Starts a level 1, 7-bag game
+				? Unique gravity curve
+		- Line Race
+			+ 20L
+			+ 40L
+			+ 100L
+		- Ultra
+			+ 2min
+			+ 5min
+			+ 20min stamina
+		- Puzzles/Challenges
+			= Some traditional puzzles
+			= A bunch of weird gamemodes
+		- Zen/Practice
+			= Endless mode with no grav and some useful testing features
+			= Like custom, has challenge options toggleable
+		- Custom
+			+ Marathon/Line Race/Ultra
+			+ Marathon:
+				+ End level
+				+ Add bonus stage
+			+ Line Race:
+				+ Line count
+				+ Toggle certain clears counting
+			+ Ultra:
+				+ Set Time
+			+ All:
+				+ Choose challenge toggles
+				+ Starting level
+				+ Custom bags and pieces
+			= Has challenge options toggleable
+	- Customization
+		+ UI Look
+			+ Light/Dark Grid
+			+ BG Toggles
+		+ Block Skin
+			+ Piece Colors
+		+ Audio Packs
+	- Options
+		- Input
+			+ Menu Controls
+			+ Game Controls
+			+ DAS/ARR/SDF
+		- Volume
+			+ Music
+			+ SFX
+		- Graphics
+			+ Fullscreen
+			+ Window Scale
+			+ Some VFX
+	- Exit

@@ -110,7 +110,7 @@
     "9647":{"character":9647,"h":13,"offset":3,"shift":16,"w":9,"x":16,"y":77,},
   },
   "hinting":0,
-  "includeTTF":false,
+  "includeTTF":true,
   "interpreter":0,
   "italic":false,
   "kerningPairs":[],
@@ -138,6 +138,6 @@
     "name":"Default",
     "path":"texturegroups/Default",
   },
-  "TTFName":"",
+  "TTFName":"C:\\Users\\galaxii\\GameMakerProjects\\quadria\\fonts\\fMonogram12\\monogram-extended.ttf",
   "usesSDF":false,
 }

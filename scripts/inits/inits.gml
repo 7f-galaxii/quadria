@@ -58,7 +58,7 @@ function init_globals(){
 		def : {shape: [
 					[ 1 ]
 				],
-				color: 0, spin_type: "All", kick: [
+				color: 0, piece_name: "?", spin_type: "All", kick: [
 				[ [ 0, 0], [-1, 0], [-1,-1], [ 0, 2], [-1, 2] ],
 				[ [ 0, 0], [ 1, 0], [ 1, 1], [ 0,-2], [ 1,-2] ],
 				[ [ 0, 0], [ 1, 0], [ 1,-1], [ 0, 2], [ 1, 2] ],
@@ -69,7 +69,7 @@ function init_globals(){
 				[1, 1, 1, 1],
 				[0, 0, 0, 0],
 				[0, 0, 0, 0]
-			], color: 5, kick: [
+			], piece_name: "I", color: 5, kick: [
 				[ [ 0, 0], [-2, 0], [ 1, 0], [-2, 1], [ 1,-2] ],
 				[ [ 0, 0], [-1, 0], [ 2, 0], [-1,-2], [ 2, 1] ],
 				[ [ 0, 0], [ 2, 0], [-1, 0], [ 2,-1], [-1, 2] ],
@@ -79,36 +79,36 @@ function init_globals(){
 		o : {shape: [
 				[ 1, 1 ],
 				[ 1, 1 ]
-			], color: 3, kick: [ [[0,0]],[[0,0]],[[0,0]],[[0,0]] ]},
+			], color: 3, piece_name: "O", kick: [ [[0,0]],[[0,0]],[[0,0]],[[0,0]] ]},
 			
 		t : {shape: [
 				[ 0, 1, 0 ],
 				[ 1, 1, 1 ],
 				[ 0, 0, 0 ]
-			], spin_type: "T", color: 7},
+			], piece_name: "T", spin_type: "T", color: 7},
 			
 		s : {shape: [
 				[ 0, 1, 1 ],
 				[ 1, 1, 0 ],
 				[ 0, 0, 0 ]
-			], color: 4},
+			], piece_name: "S", color: 4},
 			
 		z : {shape: [
 				[ 1, 1, 0 ],
 				[ 0, 1, 1 ],
 				[ 0, 0, 0 ]
-			], color: 1},
+			], piece_name: "Z", color: 1},
 			
 		j : {shape: [
 				[ 1, 0, 0 ],
 				[ 1, 1, 1 ],
 				[ 0, 0, 0 ]
-			], color: 6},
+			], piece_name: "J", color: 6},
 		
 		l : {shape: [
 				[ 0, 0, 1 ],
 				[ 1, 1, 1 ],
 				[ 0, 0, 0 ]
-			], color: 2},
+			], piece_name: "L", color: 2},
 	}
 }

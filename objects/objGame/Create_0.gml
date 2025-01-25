@@ -87,24 +87,48 @@ function check_board() {
 }
 
 function do_scoring(cleared) {
-	if (cleared && was_spun) { 
-		// spin code
-		instance_create_layer(235, 160, "UI", objText, {
-			text: "T-spin",
-			halign: fa_right,
-			valign: fa_top,
-			
-		});
+	var new_text = "";
+	if (was_spun) { 
+		new_text = piece.piece_name+"-spin";
 	}
-	if (cleared >= 4) {
-		snd_play_effect(snd.clear4, 5, 2, 1+global.combo_pitch[min(combo, 7)]);
-		combo++;
-	} else if (cleared > 0) {
+	switch (cleared) {
+	case 0:
+		combo = 0;
+		if was_spun { new_text += " Mini" };
+		break;
+	case 1:
 		snd_play_effect(snd.clear, 5, 2, 1+global.combo_pitch[min(combo, 7)]);
 		combo++;
-	} else {
-		combo = 0;
+		if (was_spun) { new_text += " Mini"; b2b_counter++ } else { b2b_counter = 0 }
+		new_text += " Single";
+		break;
+	case 2:
+		snd_play_effect(snd.clear, 5, 2, 1+global.combo_pitch[min(combo, 7)]);
+		combo++;
+		if (was_spun) { b2b_counter++ } else { b2b_counter = 0 }
+		new_text += " Double";
+		break;
+	case 3:
+		snd_play_effect(snd.clear, 5, 2, 1+global.combo_pitch[min(combo, 7)]);
+		combo++;
+		if (was_spun) { b2b_counter++ } else { b2b_counter = 0 }
+		new_text += " Triple";
+		break;
+	case 4:
+		snd_play_effect(snd.clear4, 5, 2, 1+global.combo_pitch[min(combo, 7)]);
+		combo++;
+		b2b_counter++;
+		new_text += " Quad";
+		break;
+	default:
+		snd_play_effect(snd.clear4, 5, 2, 1+global.combo_pitch[min(combo, 7)]);
+		combo++;
+		b2b_counter++;
+		new_text += " Clear x"+string(cleared);
+		break;
 	}
+	txt.text = new_text != "" ? new_text : txt.text;
+	txt.t = new_text != "" ? 150 : txt.t;
 }
 
 function lock_piece() {
@@ -138,6 +162,7 @@ function kick(index,ccw) {
 	var _temp_shape = variable_clone(piece.shape);
 	var mult = ccw ? -1 : 1;
 	var _ret = false;
+	var _kick_ind = -1;
 	array_rotate(_temp_shape,ccw);
 	// check if offset is valid
 	// create temp rotated version, and check against kicktable
@@ -148,6 +173,7 @@ function kick(index,ccw) {
 			piece.rotation = modulo(piece.rotation+mult, 4)
 			array_rotate(piece.shape, ccw);
 			_ret = true;
+			_kick_ind = i;
 			break;
 		}
 	}
@@ -158,6 +184,11 @@ function kick(index,ccw) {
 		corners += check_collision(piece.x,   piece.y+2);
 		corners += check_collision(piece.x+2, piece.y+2);
 		if (corners >= 3) { was_spun = true; }
+	} else if (_ret && piece.spin_type == "All") {
+		if (shape_collide(-1, 0, piece.shape)
+		&&  shape_collide( 1, 0, piece.shape)
+		&&  shape_collide( 0, 1, piece.shape)
+		&&  shape_collide( 0,-1, piece.shape)) { was_spun = true; }
 	}
 	return _ret;
 }
@@ -193,13 +224,14 @@ function delay_lock() {
 }
 #endregion
 #region init
-init_globals();
-randomize();
+txt = instance_create_layer(235,164,"GameUI",objText);
+paused = false;
 ld_count = 0;
 points = 0;
 combo = 0;
+b2b_counter = 0;
 was_spun = false;
-skin = "Gradient (Modern)";
+skin = "Fallback";
 _f = function(_e, _i){ return _e.name == skin; }
 sprite = global.skins[array_find_index(global.skins,_f)].sprite;
 snd = global.sounds[0];

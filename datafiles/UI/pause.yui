@@ -1,0 +1,45 @@
+id: pause
+file_type: screen
+
+import:
+  - /YUI/Animations/transitions.yui
+
+
+// 'root' defineds the root element for the screen, which will generally be a panel or border with the screen content inside of it
+root:
+
+  // a panel is used to position multiple child elements inside of it
+  type: panel
+
+  animate:
+    on_visible:
+        opacity: &fade_in
+    on_unloading:
+        opacity: &fade_out
+
+  // the canvas layout is used to position elements relative to the containing space, which in this case is the entire screen
+  // other possible layouts are: vertical, horizontal, grid, and radial
+  layout: horizontal
+  alignment: center
+
+  // here is where you add more elements to put inside the panel
+  elements:
+    - type: panel
+      background: #00000000
+      layout: vertical
+      alignment: center
+      indexed: true
+      padding: 10
+      elements:
+        - type: button
+          content: "Resume"
+          on_click: @@ e => ~close_menu(e.source)
+
+        - type: button
+          content: "Restart"
+          on_click: @@ ~room_restart()
+
+        - type: button
+          content: "Exit"
+          on_click: @@ ~to_main_menu()
+

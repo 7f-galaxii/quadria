@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"",
+  "%Name":"Gameplay",
+  "name":"Gameplay",
+  "parent":{
+    "name":"quadria",
+    "path":"quadria.yyp",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}
