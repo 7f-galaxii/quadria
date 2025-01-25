@@ -1,5 +1,0 @@
-{ message : "Variable <unknown_object>.view_item(102228, -2147483648) not set before reading it.", script : "gml_Script_close_menu", longMessage : "ERROR in action number 1
-of Mouse Event for Glob Left Released for object YuiCursorManager:
-Variable <unknown_object>.view_item(102228, -2147483648) not set before reading it.
- at gml_Script_close_menu (line 30) - 	var is_doc = view_item[$"object_index"] == yui_document;
-", stacktrace : [ "gml_Script_close_menu (line 30)","gml_Script_resolveScript@anon@2161@YuiCallFunction@YuiCallFunction (line 77)","gml_Script_call@anon@368@YuiLambda@YuiLambda (line 29) - 		var result = body.resolve(data);","gml_Script_call@anon@94@YuiBindingEventHandler@YuiEventHandler (line 6) - 			expr.call(data, args);","gml_Script_yui_call_handler (line 20) - 		return handler.call(data, args, self);","gml_Script_anon@493@gml_Object_yui_button_Create_0 (line 33) - 		yui_call_handler(yui_element.on_click, [args], data_source);","gml_Object_YuiCursorManager_Mouse_56 (line 55) - 			var handled = next.left_click();" ], line : 30 }
