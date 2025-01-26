@@ -130,6 +130,7 @@
     {"$GMIncludedFile":"","%Name":"mockup.pdn","CopyToMask":-1,"filePath":"datafiles/skins","name":"mockup.pdn","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"test_load_mapping.json","CopyToMask":-1,"filePath":"datafiles","name":"test_load_mapping.json","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"main_menu.yui","CopyToMask":-1,"filePath":"datafiles/UI","name":"main_menu.yui","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"marathon.yui","CopyToMask":-1,"filePath":"datafiles/UI","name":"marathon.yui","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"options.yui","CopyToMask":-1,"filePath":"datafiles/UI","name":"options.yui","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"pause.yui","CopyToMask":-1,"filePath":"datafiles/UI","name":"pause.yui","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"singleplayer.yui","CopyToMask":-1,"filePath":"datafiles/UI","name":"singleplayer.yui","resourceType":"GMIncludedFile","resourceVersion":"2.0",},

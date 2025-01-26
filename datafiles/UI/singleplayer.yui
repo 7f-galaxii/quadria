@@ -1,85 +1,71 @@
 id: singleplayer
-file_type: screen
+file_type: resources
 
 import:
   - /YUI/Animations/transitions.yui
+  - marathon.yui
 
+resources:
+  singleplayer_menu:
+    // a panel is used to position multiple child elements inside of it
+    type: panel
+    animate:
+      on_visible:
+        opacity: &fade_in
+      on_unloading:
+        opacity: &fade_out
 
-// 'root' defineds the root element for the screen, which will generally be a panel or border with the screen content inside of it
-root:
+    // the canvas layout is used to position elements relative to the containing space, which in this case is the entire screen
+    // other possible layouts are: vertical, horizontal, grid, and radial
+    layout: horizontal
+    alignment: { h: left }
+    size: { h: stretch }
 
-  // a panel is used to position multiple child elements inside of it
-  type: panel
+    // here is where you add more elements to put inside the panel
+    elements:
+      - type: panel
+        animate:
+          on_visible:
+            opacity: &fade_in
+          on_unloading:
+            opacity: &fade_out
+        background: #55000000
+        layout: vertical
+        alignment: center
+        indexed: true
+        padding: 10
+        elements:
+          - type: button
+            content: "Marathon"
+            on_click: @singleplayer_option = 'marathon'
 
-  // the canvas layout is used to position elements relative to the containing space, which in this case is the entire screen
-  // other possible layouts are: vertical, horizontal, grid, and radial
-  layout: horizontal
-  alignment: center
+          - type: button
+            content: "Line Race"
 
-  // here is where you add more elements to put inside the panel
-  elements:
-    - type: panel
-      background: #00000000
-      layout: vertical
-      alignment: center
-      indexed: true
-      padding: 10
-      elements:
-        - type: button
-          content: "Marathon"
-          animate:
-            on_visible:
-              opacity: &cascade_fade_in
-            on_unloading:
-              opacity: &cascade_fade_out
+          - type: button
+            content: "Blitz"
 
-        - type: button
-          content: "Line Race"
-          animate:
-            on_visible:
-              opacity: &cascade_fade_in
-            on_unloading:
-              opacity: &cascade_fade_out
+          - type: button
+            content: "Challenges"
 
-        - type: button
-          content: "Blitz"
-          animate:
-            on_visible:
-              opacity: &cascade_fade_in
-            on_unloading:
-              opacity: &cascade_fade_out
+          - type: button
+            content: "Zen/Practice"
+            on_click: @@ e => ~start_singleplayer(e.source)
 
-        - type: button
-          content: "Challenges"
-          animate:
-            on_visible:
-              opacity: &cascade_fade_in
-            on_unloading:
-              opacity: &cascade_fade_out
+          - type: button
+            content: "Custom"
 
-        - type: button
-          content: "Zen/Practice"
-          on_click: @@ e => ~start_singleplayer(e.source)
-          animate:
-            on_visible:
-              opacity: &cascade_fade_in
-            on_unloading:
-              opacity: &cascade_fade_out
+          - type: button
+            content: "Back"
+            on_click: @main_menu_option = undefined
 
-        - type: button
-          content: "Custom"
-          animate:
-            on_visible:
-              opacity: &cascade_fade_in
-            on_unloading:
-              opacity: &cascade_fade_out
-
-        - type: button
-          content: "Back"
-          on_click: @@ e => ~yui_change_screen(main_menu, e.source)
-          animate:
-            on_visible:
-              opacity: &cascade_fade_in
-            on_unloading:
-              opacity: &cascade_fade_out
-
+      - type: switch
+        visible: @singleplayer_option != undefined
+        switch_on: @singleplayer_option
+        animate:
+          on_visible:
+            opacity: &fade_in
+          on_unloading:
+            opacity: &fade_out
+        cases:
+          marathon: &marathon_menu

@@ -141,6 +141,7 @@ theme:
 
     panel:
       spacing: 5
+      background: #00000000
 
     button:
       background: &control_bg
